@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         simpanBtn.disabled = true;
         simpanBtn.textContent = 'Menyimpan...';
-        const scriptURL = 'PASTE_URL_WEB_APP_ANDA_DI_SINI'; // <-- GANTI DENGAN URL ANDA!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzbJd5cCOXyd6vqWIzfU-1pUsxGOO3E_Y_zBLsjoKANqMRac6cvhmp4i9hEJd5E1KjE/exec'; // <-- GANTI DENGAN URL ANDA!
         const formData = new FormData(form);
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => response.json())
@@ -235,3 +235,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
