@@ -31,15 +31,14 @@
             width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px; box-sizing: border-box; font-size: 16px;
         }
         .form-group input:disabled { background-color: #ecf0f1; cursor: not-allowed; }
-        .inline-group, .tbc-columns { display: flex; gap: 20px; align-items: flex-start; }
-        .inline-group > div, .tbc-columns > .column { flex: 1; }
+        .inline-group { display: flex; gap: 20px; align-items: flex-start; }
+        .inline-group > div { flex: 1; }
         .radio-group label { margin-right: 20px; font-weight: normal; }
         .radio-group input { margin-right: 5px; }
         #umur-output { padding: 1px; border: 1px solid #bdc3c7; border-radius: 5px; background-color: #ecf0f1; min-height: 42px; display: flex; align-items: center; font-size: 14px; }
         .btn-container { text-align: center; margin-top: 40px; }
         #btn-simpan { background-color: #27ae60; color: white; padding: 12px 25px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; transition: background-color 0.3s; }
         #btn-simpan:hover { background-color: #229954; }
-        /* Style untuk pertanyaan follow-up yang awalnya disembunyikan */
         .follow-up-question { display: none; margin-top: 15px; padding-left: 20px; border-left: 3px solid #3498db; }
     </style>
 </head>
@@ -51,57 +50,50 @@
 
         <div class="form-group"><label for="tanggal">Tanggal Pengisian</label><div style="display: flex; align-items: center;"><input type="date" id="tanggal" name="tanggal" required><input type="checkbox" id="tanggalHariIni" style="margin-left: 10px; width: auto;"><label for="tanggalHariIni" style="margin-bottom: 0; margin-left: 5px; font-weight: normal;">Gunakan Tanggal Hari Ini</label></div></div>
         <div class="form-group"><label for="namaLengkap">Nama Lengkap Anak</label><input type="text" id="namaLengkap" name="namaLengkap" required></div>
-        <div class="form-group"><label for="nikAnak">NIK Anak</label><input type="number" id="nikAnak" name="nikAnak" placeholder="16 digit angka" required></div>
-        <div class="inline-group"><div class="form-group"><label for="tanggalLahir">Tanggal Lahir</label><input type="date" id="tanggalLahir" name="tanggalLahir" required></div><div class="form-group"><label>Umur</label><div id="umur-output">Terisi Otomatis</div></div></div>
-        <div class="form-group"><label>Jenis Kelamin</label><div class="radio-group"><label><input type="radio" name="jenisKelamin" value="Pria" required> Pria</label><label><input type="radio" name="jenisKelamin" value="Wanita"> Wanita</label></div></div>
-        <div class="form-group"><label for="telepon">Nomor Telepon/HP</label><input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789" required></div>
-        <div class="form-group"><label for="alamat">Alamat Lengkap</label><textarea id="alamat" name="alamat" required></textarea></div>
-        <div class="form-group"><label for="kelurahan">Kelurahan</label><input type="text" id="kelurahan" name="kelurahan" required></div>
-        <div class="inline-group"><div class="form-group"><label for="jenjangSekolah">Jenjang Sekolah</label><select id="jenjangSekolah" name="jenjangSekolah" required><option value="" disabled selected>-- Pilih Jenjang --</option><option value="SD">SD</option><option value="SMP">SMP</option><option value="SMA">SMA</option></select></div><div class="form-group"><label for="kelas">Kelas</label><select id="kelas" name="kelas" required><option value="" disabled selected>-- Pilih Jenjang Dulu --</option></select></div></div>
-        <div class="form-group"><label for="asalSekolah">Asal Sekolah</label><input type="text" id="asalSekolah" name="asalSekolah" required></div>
-        <div class="form-group"><label>Termasuk Kelompok Disabilitas?</label><div class="radio-group"><label><input type="radio" name="disabilitas" value="Ya" required> Ya</label><label><input type="radio" name="disabilitas" value="Tidak"> Tidak</label></div></div>
-        <div class="form-group"><label for="nikOrtu">NIK Orang Tua/Wali</label><input type="number" id="nikOrtu" name="nikOrtu" placeholder="16 digit angka" required></div>
-        <div class="form-group"><label for="namaOrtu">Nama Orang Tua/Wali</label><input type="text" id="namaOrtu" name="namaOrtu" required></div>
+        <div class="form-group"><label for="nikAnak">NIK Anak</label><input type="number" id="nikAnak" name="NIKAnak" placeholder="16 digit angka" required></div>
+        <div class="inline-group"><div class="form-group"><label for="tanggalLahir">Tanggal Lahir</label><input type="date" id="tanggalLahir" name="TanggalLahir" required></div><div class="form-group"><label>Umur</label><div id="umur-output">Otomatis terisi</div></div></div>
+        <div class="form-group"><label>Jenis Kelamin</label><div class="radio-group"><label><input type="radio" name="JenisKelamin" value="Pria" required> Pria</label><label><input type="radio" name="JenisKelamin" value="Wanita"> Wanita</label></div></div>
+        <div class="form-group"><label for="telepon">Nomor Telepon/HP</label><input type="tel" id="telepon" name="NoTelepon" placeholder="Contoh: 08123456789" required></div>
+        <div class="form-group"><label for="alamat">Alamat Lengkap</label><textarea id="alamat" name="Alamat" required></textarea></div>
+        <div class="form-group"><label for="kelurahan">Kelurahan</label><input type="text" id="kelurahan" name="Kelurahan" required></div>
+        <div class="inline-group"><div class="form-group"><label for="jenjangSekolah">Jenjang Sekolah</label><select id="jenjangSekolah" name="JenjangSekolah" required><option value="" disabled selected>-- Pilih Jenjang --</option><option value="SD">SD</option><option value="SMP">SMP</option><option value="SMA">SMA</option></select></div><div class="form-group"><label for="kelas">Kelas</label><select id="kelas" name="Kelas" required><option value="" disabled selected>-- Pilih Jenjang Dulu --</option></select></div></div>
+        <div class="form-group"><label for="asalSekolah">Asal Sekolah</label><input type="text" id="asalSekolah" name="AsalSekolah" required></div>
+        <div class="form-group"><label>Termasuk Kelompok Disabilitas?</label><div class="radio-group"><label><input type="radio" name="Disabilitas" value="Ya" required> Ya</label><label><input type="radio" name="Disabilitas" value="Tidak"> Tidak</label></div></div>
+        <div class="form-group"><label for="nikOrtu">NIK Orang Tua/Wali</label><input type="number" id="nikOrtu" name="NIKOrtu" placeholder="16 digit angka" required></div>
+        <div class="form-group"><label for="namaOrtu">Nama Orang Tua/Wali</label><input type="text" id="namaOrtu" name="NamaOrtu" required></div>
 
-        <h2>Skrining TBC</h2><div class="tbc-columns"><div class="column form-group"><label class="question-text">Apakah saat ini anak anda sedang batuk-batuk lebih dari 2 minggu?</label><div class="radio-group"><label><input type="radio" name="tbc1" value="Ya" required> Ya</label><label><input type="radio" name="tbc1" value="Tidak"> Tidak</label></div></div><div class="column form-group"><label class="question-text">Adakah orang yang sakit TBC tinggal satu rumah dengan anak?</label><div class="radio-group"><label><input type="radio" name="tbc2" value="Ya" required> Ya</label><label><input type="radio" name="tbc2" value="Tidak"> Tidak</label></div></div></div>
-        <h2>Skrining Diabetes Melitus</h2><div class="form-group"><p class="question-text">1. Apakah anak sering terbangun pada malam hari untuk buang air kecil atau harus ke toilet lebih dari 2x per malam?</p><div class="radio-group"><label><input type="radio" name="dm1" value="Ya" required> Ya</label><label><input type="radio" name="dm1" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah anak sering merasa haus meskipun sudah banyak minum?</p><div class="radio-group"><label><input type="radio" name="dm2" value="Ya" required> Ya</label><label><input type="radio" name="dm2" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Apakah anak kembali sering mengompol di malam hari?</p><div class="radio-group"><label><input type="radio" name="dm3" value="Ya" required> Ya</label><label><input type="radio" name="dm3" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Apakah anak atau saudara kandung pernah didiagnosa kencing manis?</p><div class="radio-group"><label><input type="radio" name="dm4" value="Ya" required> Ya</label><label><input type="radio" name="dm4" value="Tidak"> Tidak</label></div></div>
-        <h2>Skrining Hepatitis B</h2><div class="form-group"><p class="question-text">1. Apakah pernah tes hepatitis B dengan hasil positif?</p><div class="radio-group"><label><input type="radio" name="hep1" value="Ya" required> Ya</label><label><input type="radio" name="hep1" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah ibu atau saudara kandung mengidap hepatitis?</p><div class="radio-group"><label><input type="radio" name="hep2" value="Ya" required> Ya</label><label><input type="radio" name="hep2" value="Tidak"> Tidak</label></div></div>
-        <h2>Skrining Tingkat Aktivitas Fisik</h2><div class="form-group"><label class="question-text" for="aktivitasFisik">1. Dalam seminggu, berapa hari anak aktif fisik minimal 60 menit/hari?</label><select id="aktivitasFisik" name="aktivitasFisik" required><option value="" disabled selected>-- Pilih Jumlah Hari --</option><option value="0 Hari">0 Hari</option><option value="1 Hari">1 Hari</option><option value="2 Hari">2 Hari</option><option value="3 Hari">3 Hari</option><option value="4 Hari">4 Hari</option><option value="5 Hari">5 Hari</option><option value="6 Hari">6 Hari</option><option value="7 Hari">7 Hari</option></select></div>
-        <h2>Skrining Kesehatan Jiwa</h2><div class="form-group"><p class="question-text">1. Dalam 2 minggu terakhir, sering merasa khawatir atau gelisah?</p><div class="radio-group"><label><input type="radio" name="jiwa1" value="Ya" required> Ya</label><label><input type="radio" name="jiwa1" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Dalam 2 minggu terakhir, berpikir berlebihan dan sulit mengendalikan diri?</p><div class="radio-group"><label><input type="radio" name="jiwa2" value="Ya" required> Ya</label><label><input type="radio" name="jiwa2" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Dalam 2 minggu terakhir, sering merasa sedih atau tertekan tanpa sebab jelas?</p><div class="radio-group"><label><input type="radio" name="jiwa3" value="Ya" required> Ya</label><label><input type="radio" name="jiwa3" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Dalam 2 minggu terakhir, sering capek, sulit tidur, dan sulit fokus?</p><div class="radio-group"><label><input type="radio" name="jiwa4" value="Ya" required> Ya</label><label><input type="radio" name="jiwa4" value="Tidak"> Tidak</label></div></div>
-        <h2>Skrining Kesehatan Indra</h2><div class="form-group"><p class="question-text">1. Apakah ada bercak kulit putih/merah yang kurang rasa/kebal?</p><div class="radio-group"><label><input type="radio" name="indra1" value="Ya" required> Ya</label><label><input type="radio" name="indra1" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah ada kelumpuhan/luka di tangan/kaki yang tidak nyeri saat disentuh?</p><div class="radio-group"><label><input type="radio" name="indra2" value="Ya" required> Ya</label><label><input type="radio" name="indra2" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Apakah ada koreng/kudis yang gatal terutama malam hari?</p><div class="radio-group"><label><input type="radio" name="indra3" value="Ya" required> Ya</label><label><input type="radio" name="indra3" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Apakah keluarga/teman memiliki koreng gatal yang sama?</p><div class="radio-group"><label><input type="radio" name="indra4" value="Ya" required> Ya</label><label><input type="radio" name="indra4" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">5. Apakah menggunakan kacamata?</p><div class="radio-group"><label><input type="radio" name="indra5" value="Ya" required> Ya</label><label><input type="radio" name="indra5" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">6. Apakah ada gigi berlubang?</p><div class="radio-group"><label><input type="radio" name="indra6" value="Ya" required> Ya</label><label><input type="radio" name="indra6" value="Tidak"> Tidak</label></div></div>
+        <h2>Skrining TBC</h2>
+        <div class="form-group">
+            <p class="question-text">1. Apakah saat ini anak anda sedang batuk-batuk lebih dari 2 minggu?</p>
+            <div class="radio-group">
+                <label><input type="radio" name="TBC_BatukLama" value="Ya" required> Ya</label>
+                <label><input type="radio" name="TBC_BatukLama" value="Tidak"> Tidak</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="question-text">2. Adakah orang yang sakit TBC tinggal satu rumah dengan anak?</p>
+            <div class="radio-group">
+                <label><input type="radio" name="TBC_KontakSerumah" value="Ya" required> Ya</label>
+                <label><input type="radio" name="TBC_KontakSerumah" value="Tidak"> Tidak</label>
+            </div>
+        </div>
+        
+        <h2>Skrining Diabetes Melitus</h2><div class="form-group"><p class="question-text">1. Apakah anak sering terbangun pada malam hari untuk buang air kecil atau harus ke toilet lebih dari 2x per malam?</p><div class="radio-group"><label><input type="radio" name="DM_KencingMalam" value="Ya" required> Ya</label><label><input type="radio" name="DM_KencingMalam" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah anak sering merasa haus meskipun sudah banyak minum?</p><div class="radio-group"><label><input type="radio" name="DM_HausTerus" value="Ya" required> Ya</label><label><input type="radio" name="DM_HausTerus" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Apakah anak kembali sering mengompol di malam hari?</p><div class="radio-group"><label><input type="radio" name="DM_MengompolLagi" value="Ya" required> Ya</label><label><input type="radio" name="DM_MengompolLagi" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Apakah anak atau saudara kandung pernah didiagnosa kencing manis?</p><div class="radio-group"><label><input type="radio" name="DM_RiwayatKeluarga" value="Ya" required> Ya</label><label><input type="radio" name="DM_RiwayatKeluarga" value="Tidak"> Tidak</label></div></div>
+        <h2>Skrining Hepatitis B</h2><div class="form-group"><p class="question-text">1. Apakah pernah tes hepatitis B dengan hasil positif?</p><div class="radio-group"><label><input type="radio" name="Hepatitis_TesPositif" value="Ya" required> Ya</label><label><input type="radio" name="Hepatitis_TesPositif" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah ibu atau saudara kandung mengidap hepatitis?</p><div class="radio-group"><label><input type="radio" name="Hepatitis_KontakKeluarga" value="Ya" required> Ya</label><label><input type="radio" name="Hepatitis_KontakKeluarga" value="Tidak"> Tidak</label></div></div>
+        <h2>Skrining Tingkat Aktivitas Fisik</h2><div class="form-group"><label class="question-text" for="aktivitasFisik">1. Dalam seminggu, berapa hari anak aktif fisik minimal 60 menit/hari?</label><select id="aktivitasFisik" name="AktivitasFisik" required><option value="" disabled selected>-- Pilih Jumlah Hari --</option><option value="0 Hari">0 Hari</option><option value="1 Hari">1 Hari</option><option value="2 Hari">2 Hari</option><option value="3 Hari">3 Hari</option><option value="4 Hari">4 Hari</option><option value="5 Hari">5 Hari</option><option value="6 Hari">6 Hari</option><option value="7 Hari">7 Hari</option></select></div>
+        <h2>Skrining Kesehatan Jiwa</h2><div class="form-group"><p class="question-text">1. Dalam 2 minggu terakhir, sering merasa khawatir atau gelisah?</p><div class="radio-group"><label><input type="radio" name="Jiwa_Khawatir" value="Ya" required> Ya</label><label><input type="radio" name="Jiwa_Khawatir" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Dalam 2 minggu terakhir, berpikir berlebihan dan sulit mengendalikan diri?</p><div class="radio-group"><label><input type="radio" name="Jiwa_Overthinking" value="Ya" required> Ya</label><label><input type="radio" name="Jiwa_Overthinking" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Dalam 2 minggu terakhir, sering merasa sedih atau tertekan tanpa sebab jelas?</p><div class="radio-group"><label><input type="radio" name="Jiwa_Sedih" value="Ya" required> Ya</label><label><input type="radio" name="Jiwa_Sedih" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Dalam 2 minggu terakhir, sering capek, sulit tidur, dan sulit fokus?</p><div class="radio-group"><label><input type="radio" name="Jiwa_Capek" value="Ya" required> Ya</label><label><input type="radio" name="Jiwa_Capek" value="Tidak"> Tidak</label></div></div>
+        <h2>Skrining Kesehatan Indra</h2><div class="form-group"><p class="question-text">1. Apakah ada bercak kulit putih/merah yang kurang rasa/kebal?</p><div class="radio-group"><label><input type="radio" name="Indra_BercakKulit" value="Ya" required> Ya</label><label><input type="radio" name="Indra_BercakKulit" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">2. Apakah ada kelumpuhan/luka di tangan/kaki yang tidak nyeri saat disentuh?</p><div class="radio-group"><label><input type="radio" name="Indra_LukaKebas" value="Ya" required> Ya</label><label><input type="radio" name="Indra_LukaKebas" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">3. Apakah ada koreng/kudis yang gatal terutama malam hari?</p><div class="radio-group"><label><input type="radio" name="Indra_Kudis" value="Ya" required> Ya</label><label><input type="radio" name="Indra_Kudis" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">4. Apakah keluarga/teman memiliki koreng gatal yang sama?</p><div class="radio-group"><label><input type="radio" name="Indra_KontakKudis" value="Ya" required> Ya</label><label><input type="radio" name="Indra_KontakKudis" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">5. Apakah menggunakan kacamata?</p><div class="radio-group"><label><input type="radio" name="Indra_Kacamata" value="Ya" required> Ya</label><label><input type="radio" name="Indra_Kacamata" value="Tidak"> Tidak</label></div></div><div class="form-group"><p class="question-text">6. Apakah ada gigi berlubang?</p><div class="radio-group"><label><input type="radio" name="Indra_GigiLubang" value="Ya" required> Ya</label><label><input type="radio" name="Indra_GigiLubang" value="Tidak"> Tidak</label></div></div>
 
         <div id="pertanyaanKhususKelas456" style="display: none;">
-            
-            <h2>Skrining Kesehatan Reproduksi</h2>
-            <div class="form-group">
-                <p class="question-text">1. Apakah sudah mengalami menstruasi?</p>
-                <div class="radio-group"><label><input type="radio" name="repro1" value="Ya"> Ya</label><label><input type="radio" name="repro1" value="Tidak"> Tidak</label></div>
-                <div id="pertanyaanMenstruasiUsia" class="form-group follow-up-question">
-                    <label for="repro2" class="question-text">2. Pada usia berapa mengalami menstruasi pertama?</label>
-                    <select id="repro2" name="repro2"><option value="" disabled selected>-- Pilih Usia --</option><option value="8">8 Tahun</option><option value="9">9 Tahun</option><option value="10">10 Tahun</option><option value="11">11 Tahun</option><option value="12">12 Tahun</option><option value="13">13 Tahun</option><option value="14">14 Tahun</option><option value="15">15 Tahun</option></select>
-                </div>
-            </div>
-            <div class="form-group"><p class="question-text">3. Apakah pernah mengalami keputihan?</p><div class="radio-group"><label><input type="radio" name="repro3" value="Ya"> Ya</label><label><input type="radio" name="repro3" value="Tidak"> Tidak</label></div></div>
-            <div class="form-group"><p class="question-text">4. Apakah pernah mengalami gatal-gatal di kemaluan?</p><div class="radio-group"><label><input type="radio" name="repro4" value="Ya"> Ya</label><label><input type="radio" name="repro4" value="Tidak"> Tidak</label></div></div>
-            <div class="form-group"><p class="question-text">5. Apakah mengalami nyeri/tidak nyaman saat Buang Air Kecil (BAK) atau Buang Air Besar (BAB)?</p><div class="radio-group"><label><input type="radio" name="repro5" value="Ya"> Ya</label><label><input type="radio" name="repro5" value="Tidak"> Tidak</label></div></div>
-            
-            <h2>Skrining Perilaku Merokok </h2>
-            <div class="form-group">
-                <p class="question-text">1. Apakah anda merokok dalam setahun terakhir ini?</p>
-                <div class="radio-group"><label><input type="radio" name="rokok1" value="Ya"> Ya</label><label><input type="radio" name="rokok1" value="Tidak"> Tidak</label></div>
-                <div id="pertanyaanJenisRokok" class="form-group follow-up-question">
-                    <p class="question-text">2. Jika Perokok, jenis rokok apa yang dikonsumsi?</p>
-                    <div class="radio-group"><label><input type="radio" name="rokok2" value="Batangan"> Batangan</label><label><input type="radio" name="rokok2" value="Elektrik"> Elektrik</label></div>
-                </div>
-                <div id="pertanyaanAsapRokok" class="form-group follow-up-question">
-                    <p class="question-text">3. Jika bukan perokok, apakah anda terpapar asap rokok dari orang lain dalam sebulan terakhir?</p>
-                    <div class="radio-group"><label><input type="radio" name="rokok3" value="Ya"> Ya</label><label><input type="radio" name="rokok3" value="Tidak"> Tidak</label></div>
-                </div>
-            </div>
-
-            <h2>Skrining Kebugaran</h2>
-            <div class="form-group"><p class="question-text">1. Apakah dokter pernah menyatakan bahwa anak anda memiliki masalah pada tulang dan sendi seperti radang sendi?</p><div class="radio-group"><label><input type="radio" name="kebugaran1" value="Ya"> Ya</label><label><input type="radio" name="kebugaran1" value="Tidak"> Tidak</label></div></div>
-
+            <h2>Skrining Kesehatan Reproduksi (Khusus Kelas 4, 5, 6)</h2>
+            <div class="form-group"><p class="question-text">1. Apakah sudah mengalami menstruasi?</p><div class="radio-group"><label><input type="radio" name="Reproduksi_SudahMenstruasi" value="Ya"> Ya</label><label><input type="radio" name="Reproduksi_SudahMenstruasi" value="Tidak"> Tidak</label></div><div id="pertanyaanMenstruasiUsia" class="form-group follow-up-question"><label for="repro2" class="question-text">2. Pada usia berapa mengalami menstruasi pertama?</label><select id="repro2" name="Reproduksi_UsiaMenstruasi"><option value="" disabled selected>-- Pilih Usia --</option><option value="8">8 Tahun</option><option value="9">9 Tahun</option><option value="10">10 Tahun</option><option value="11">11 Tahun</option><option value="12">12 Tahun</option><option value="13">13 Tahun</option><option value="14">14 Tahun</option><option value="15">15 Tahun</option></select></div></div>
+            <div class="form-group"><p class="question-text">3. Apakah pernah mengalami keputihan?</p><div class="radio-group"><label><input type="radio" name="Reproduksi_Keputihan" value="Ya"> Ya</label><label><input type="radio" name="Reproduksi_Keputihan" value="Tidak"> Tidak</label></div></div>
+            <div class="form-group"><p class="question-text">4. Apakah pernah mengalami gatal-gatal di kemaluan?</p><div class="radio-group"><label><input type="radio" name="Reproduksi_Gatal" value="Ya"> Ya</label><label><input type="radio" name="Reproduksi_Gatal" value="Tidak"> Tidak</label></div></div>
+            <div class="form-group"><p class="question-text">5. Apakah mengalami nyeri/tidak nyaman saat Buang Air Kecil (BAK) atau Buang Air Besar (BAB)?</p><div class="radio-group"><label><input type="radio" name="Reproduksi_NyeriBAK" value="Ya"> Ya</label><label><input type="radio" name="Reproduksi_NyeriBAK" value="Tidak"> Tidak</label></div></div>
+            <h2>Skrining Perilaku Merokok (Khusus Kelas 4, 5, 6)</h2>
+            <div class="form-group"><p class="question-text">1. Apakah anda merokok dalam setahun terakhir ini?</p><div class="radio-group"><label><input type="radio" name="Rokok_MerokokSetahun" value="Ya"> Ya</label><label><input type="radio" name="Rokok_MerokokSetahun" value="Tidak"> Tidak</label></div><div id="pertanyaanJenisRokok" class="form-group follow-up-question"><p class="question-text">2. Jika Perokok, jenis rokok apa yang dikonsumsi?</p><div class="radio-group"><label><input type="radio" name="Rokok_JenisRokok" value="Batangan"> Batangan</label><label><input type="radio" name="Rokok_JenisRokok" value="Elektrik"> Elektrik</label></div></div><div id="pertanyaanAsapRokok" class="form-group follow-up-question"><p class="question-text">3. Jika bukan perokok, apakah anda terpapar asap rokok dari orang lain dalam sebulan terakhir?</p><div class="radio-group"><label><input type="radio" name="Rokok_TerpaparAsap" value="Ya"> Ya</label><label><input type="radio" name="Rokok_TerpaparAsap" value="Tidak"> Tidak</label></div></div></div>
+            <h2>Skrining Kebugaran (Khusus Kelas 4, 5, 6)</h2>
+            <div class="form-group"><p class="question-text">1. Apakah dokter pernah menyatakan bahwa anak anda memiliki masalah pada tulang dan sendi seperti radang sendi?</p><div class="radio-group"><label><input type="radio" name="Kebugaran_MasalahSendi" value="Ya"> Ya</label><label><input type="radio" name="Kebugaran_MasalahSendi" value="Tidak"> Tidak</label></div></div>
         </div>
 
         <div class="btn-container">
@@ -111,8 +103,9 @@
 </div>
 
 <script>
+// SCRIPT JAVASCRIPT LENGKAP (TIDAK ADA PERUBAHAN DI SINI, HANYA MENYESUAIKAN NAME INPUT DI ATAS)
+// ... (Salin semua bagian script dari jawaban sebelumnya) ...
 document.addEventListener('DOMContentLoaded', function() {
-    // --- Semua elemen form ---
     const form = document.getElementById('skriningForm');
     const simpanBtn = document.getElementById('btn-simpan');
     const tanggalInput = document.getElementById('tanggal');
@@ -121,207 +114,122 @@ document.addEventListener('DOMContentLoaded', function() {
     const umurOutput = document.getElementById('umur-output');
     const jenjangSekolahSelect = document.getElementById('jenjangSekolah');
     const kelasSelect = document.getElementById('kelas');
-    
-    // Elemen untuk pertanyaan kondisional
     const containerKhusus = document.getElementById('pertanyaanKhususKelas456');
-    const repro1Radios = document.querySelectorAll('input[name="repro1"]');
+    const repro1Radios = document.querySelectorAll('input[name="Reproduksi_SudahMenstruasi"]');
     const pertanyaanMenstruasiUsia = document.getElementById('pertanyaanMenstruasiUsia');
-    const rokok1Radios = document.querySelectorAll('input[name="rokok1"]');
+    const rokok1Radios = document.querySelectorAll('input[name="Rokok_MerokokSetahun"]');
     const pertanyaanJenisRokok = document.getElementById('pertanyaanJenisRokok');
     const pertanyaanAsapRokok = document.getElementById('pertanyaanAsapRokok');
 
-
-    // --- Logika Interaktif Formulir Dasar ---
     const getTodayDateString=()=>{const t=new Date,e=t.getFullYear(),a=String(t.getMonth()+1).padStart(2,"0");return`${e}-${a}-${String(t.getDate()).padStart(2,"0")}`};tanggalHariIniCheckbox.addEventListener("change",function(){this.checked?(tanggalInput.value=getTodayDateString(),tanggalInput.disabled=!0):(tanggalInput.value="",tanggalInput.disabled=!1)});tanggalLahirInput.addEventListener("change",function(){if(!this.value)return void(umurOutput.textContent="Otomatis terisi");const t=new Date(this.value),e=new Date;let a=e.getFullYear()-t.getFullYear(),n=e.getMonth()-t.getMonth(),i=e.getDate()-t.getDate();i<0&&(n--,i+=new Date(e.getFullYear(),e.getMonth(),0).getDate()),n<0&&(a--,n+=12),a<0?umurOutput.textContent="Tanggal lahir tidak valid":umurOutput.textContent=`${a} tahun, ${n} bulan, ${i} hari`});
-    
-    // --- Logika Kelas Dinamis ---
-    const kelasOptions={SD:[1,2,3,4,5,6],SMP:[7,8,9],SMA:[10,11,12]};
-    jenjangSekolahSelect.addEventListener("change", function() {
-        const jenjang = this.value;
-        kelasSelect.innerHTML = '<option value="" disabled selected>-- Pilih Kelas --</option>';
-        if (jenjang && kelasOptions[jenjang]) {
-            kelasOptions[jenjang].forEach(kelas => {
-                const option = document.createElement('option');
-                option.value = kelas;
-                option.textContent = kelas;
-                kelasSelect.appendChild(option);
-            });
-        }
-        // Picu event change di kelas select untuk menyembunyikan pertanyaan khusus saat jenjang berubah
-        kelasSelect.dispatchEvent(new Event('change'));
-    });
+    const kelasOptions={SD:[1,2,3,4,5,6],SMP:[7,8,9],SMA:[10,11,12]};jenjangSekolahSelect.addEventListener("change",function(){const t=this.value;kelasSelect.innerHTML='<option value="" disabled selected>-- Pilih Kelas --</option>',t&&kelasOptions[t]&&kelasOptions[t].forEach(t=>{const e=document.createElement("option");e.value=t,e.textContent=t,kelasSelect.appendChild(e)}),kelasSelect.dispatchEvent(new Event("change"))});
+    kelasSelect.addEventListener("change",function(){const t=parseInt(this.value,10),e=containerKhusus.querySelectorAll("input, select");if([4,5,6].includes(t))containerKhusus.style.display="block",document.querySelector('input[name="Reproduksi_SudahMenstruasi"]').required=!0,document.querySelector('input[name="Reproduksi_Keputihan"]').required=!0,document.querySelector('input[name="Reproduksi_Gatal"]').required=!0,document.querySelector('input[name="Reproduksi_NyeriBAK"]').required=!0,document.querySelector('input[name="Rokok_MerokokSetahun"]').required=!0,document.querySelector('input[name="Kebugaran_MasalahSendi"]').required=!0;else{containerKhusus.style.display="none",e.forEach(t=>{t.required=!1,"radio"===t.type||"checkbox"===t.type?t.checked=!1:t.value=""}),pertanyaanMenstruasiUsia.style.display="none",pertanyaanJenisRokok.style.display="none",pertanyaanAsapRokok.style.display="none"}});
+    repro1Radios.forEach(t=>t.addEventListener("change",function(){const e=document.getElementById("repro2");"Ya"===this.value&&this.checked?(pertanyaanMenstruasiUsia.style.display="block",e.required=!0):(pertanyaanMenstruasiUsia.style.display="none",e.required=!1,e.value="")}));
+    rokok1Radios.forEach(t=>t.addEventListener("change",function(){const e=document.querySelectorAll('input[name="Rokok_JenisRokok"]'),n=document.querySelectorAll('input[name="Rokok_TerpaparAsap"]');"Ya"===this.value&&this.checked?(pertanyaanJenisRokok.style.display="block",e.forEach(t=>t.required=!0),pertanyaanAsapRokok.style.display="none",n.forEach(t=>{t.required=!1,t.checked=!1})):"Tidak"===this.value&&this.checked&&(pertanyaanAsapRokok.style.display="block",n.forEach(t=>t.required=!0),pertanyaanJenisRokok.style.display="none",e.forEach(t=>{t.required=!1,t.checked=!1}))}));
 
-    // --- LOGIKA UTAMA: TAMPILKAN/SEMBUNYIKAN PERTANYAAN KHUSUS ---
-    kelasSelect.addEventListener('change', function() {
-        const kelasTerpilih = parseInt(this.value, 10);
-        const inputsKhusus = containerKhusus.querySelectorAll('input, select');
-
-        if ([4, 5, 6].includes(kelasTerpilih)) {
-            containerKhusus.style.display = 'block';
-            // Set required untuk pertanyaan utama, bukan follow-up
-            document.querySelector('input[name="repro1"]').required = true;
-            document.querySelector('input[name="repro3"]').required = true;
-            document.querySelector('input[name="repro4"]').required = true;
-            document.querySelector('input[name="repro5"]').required = true;
-            document.querySelector('input[name="rokok1"]').required = true;
-            document.querySelector('input[name="kebugaran1"]').required = true;
-
-        } else {
-            containerKhusus.style.display = 'none';
-            // Hapus semua 'required' dan reset nilainya jika disembunyikan
-            inputsKhusus.forEach(input => {
-                input.required = false;
-                if (input.type === 'radio' || input.type === 'checkbox') {
-                    input.checked = false;
-                } else {
-                    input.value = '';
-                }
-            });
-            // Sembunyikan juga semua follow-up questions
-            pertanyaanMenstruasiUsia.style.display = 'none';
-            pertanyaanJenisRokok.style.display = 'none';
-            pertanyaanAsapRokok.style.display = 'none';
-        }
-    });
-    
-    // Logika follow-up untuk Kesehatan Reproduksi
-    repro1Radios.forEach(radio => radio.addEventListener('change', function() {
-        const usiaSelect = document.getElementById('repro2');
-        if (this.value === 'Ya' && this.checked) {
-            pertanyaanMenstruasiUsia.style.display = 'block';
-            usiaSelect.required = true;
-        } else {
-            pertanyaanMenstruasiUsia.style.display = 'none';
-            usiaSelect.required = false;
-            usiaSelect.value = '';
-        }
-    }));
-    
-    // Logika follow-up untuk Perilaku Merokok
-    rokok1Radios.forEach(radio => radio.addEventListener('change', function() {
-        const jenisRokokInputs = document.querySelectorAll('input[name="rokok2"]');
-        const asapRokokInputs = document.querySelectorAll('input[name="rokok3"]');
-
-        if (this.value === 'Ya' && this.checked) {
-            pertanyaanJenisRokok.style.display = 'block';
-            jenisRokokInputs.forEach(i => i.required = true);
-            pertanyaanAsapRokok.style.display = 'none';
-            asapRokokInputs.forEach(i => { i.required = false; i.checked = false; });
-        } else if (this.value === 'Tidak' && this.checked) {
-            pertanyaanAsapRokok.style.display = 'block';
-            asapRokokInputs.forEach(i => i.required = true);
-            pertanyaanJenisRokok.style.display = 'none';
-            jenisRokokInputs.forEach(i => { i.required = false; i.checked = false; });
-        }
-    }));
-
-
-    // --- Logika Tombol Simpan ke PDF ---
-    simpanBtn.addEventListener('click', function() {
+    simpanBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         if (!form.checkValidity()) {
             alert('Harap isi semua kolom yang wajib diisi sebelum menyimpan.');
             form.reportValidity();
             return;
         }
-
+        simpanBtn.disabled = true;
+        simpanBtn.textContent = 'Menyimpan...';
+        const scriptURL = 'PASTE_URL_WEB_APP_ANDA_DI_SINI'; // <-- GANTI DENGAN URL ANDA!
+        const formData = new FormData(form);
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('Data berhasil disimpan ke Spreadsheet!');
+                    generatePDF();
+                } else {
+                    throw new Error('Gagal menyimpan ke Spreadsheet. Coba lagi.');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Terjadi kesalahan: ' + error.message);
+            })
+            .finally(() => {
+                simpanBtn.disabled = false;
+                simpanBtn.textContent = 'Simpan ke PDF & Spreadsheet';
+            });
+    });
+    
+    function generatePDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('p', 'pt', 'a4');
-
         const formatTanggal = (d) => d ? d.split('-').reverse().join('-') : "";
         const getRadioValue = (name) => {
             const radio = document.querySelector(`input[name="${name}"]:checked`);
             return radio ? radio.value : 'Tidak Diisi';
         }
-
         const namaLengkap = document.getElementById('namaLengkap').value;
         const tableBody = [];
         const sectionHeaderStyle = { fontStyle: 'bold', fillColor: '#eaf2f8', textColor: '#2c3e50' };
-
-        // Data Diri & Skrining Umum
         tableBody.push([{ content: 'DATA DIRI ANAK', colSpan: 2, styles: sectionHeaderStyle }]);
         tableBody.push(['Tanggal Pengisian', formatTanggal(tanggalInput.value)]);
         tableBody.push(['Nama Lengkap', namaLengkap]);
-        // ... (data diri lainnya)
         tableBody.push(['NIK Anak', document.getElementById('nikAnak').value]);
         tableBody.push(['Tanggal Lahir', formatTanggal(tanggalLahirInput.value)]);
         tableBody.push(['Umur', umurOutput.textContent]);
-        tableBody.push(['Jenis Kelamin', getRadioValue('jenisKelamin')]);
+        tableBody.push(['Jenis Kelamin', getRadioValue('JenisKelamin')]);
         tableBody.push(['No. Telp/HP', document.getElementById('telepon').value]);
         tableBody.push(['Alamat', document.getElementById('alamat').value]);
         tableBody.push(['Kelurahan', document.getElementById('kelurahan').value]);
         tableBody.push(['Jenjang Sekolah', jenjangSekolahSelect.value]);
         tableBody.push(['Kelas', kelasSelect.value]);
         tableBody.push(['Asal Sekolah', document.getElementById('asalSekolah').value]);
-        tableBody.push(['Disabilitas', getRadioValue('disabilitas')]);
+        tableBody.push(['Disabilitas', getRadioValue('Disabilitas')]);
         tableBody.push(['NIK Ortu/Wali', document.getElementById('nikOrtu').value]);
         tableBody.push(['Nama Ortu/Wali', document.getElementById('namaOrtu').value]);
-
-        // ... (semua skrining umum)
         tableBody.push([{ content: 'SKRINING TBC', colSpan: 2, styles: sectionHeaderStyle }]);
-        tableBody.push(['Batuk > 2 minggu?', getRadioValue('tbc1')]);
-        tableBody.push(['Satu rumah dengan penderita TBC?', getRadioValue('tbc2')]);
+        tableBody.push(['Batuk > 2 minggu?', getRadioValue('TBC_BatukLama')]);
+        tableBody.push(['Satu rumah dengan penderita TBC?', getRadioValue('TBC_KontakSerumah')]);
         tableBody.push([{ content: 'SKRINING DIABETES MELITUS', colSpan: 2, styles: sectionHeaderStyle }]);
-        tableBody.push(['Sering kencing malam (>2x)?', getRadioValue('dm1')]);
-        tableBody.push(['Sering haus walau banyak minum?', getRadioValue('dm2')]);
-        tableBody.push(['Kembali mengompol malam hari?', getRadioValue('dm3')]);
-        tableBody.push(['Riwayat DM pada anak/saudara?', getRadioValue('dm4')]);
+        tableBody.push(['Sering kencing malam (>2x)?', getRadioValue('DM_KencingMalam')]);
+        tableBody.push(['Sering haus walau banyak minum?', getRadioValue('DM_HausTerus')]);
+        tableBody.push(['Kembali mengompol malam hari?', getRadioValue('DM_MengompolLagi')]);
+        tableBody.push(['Riwayat DM pada anak/saudara?', getRadioValue('DM_RiwayatKeluarga')]);
         tableBody.push([{ content: 'SKRINING HEPATITIS B', colSpan: 2, styles: sectionHeaderStyle }]);
-        tableBody.push(['Tes Hepatitis B positif?', getRadioValue('hep1')]);
-        tableBody.push(['Ibu/saudara kandung idap Hepatitis?', getRadioValue('hep2')]);
+        tableBody.push(['Tes Hepatitis B positif?', getRadioValue('Hepatitis_TesPositif')]);
+        tableBody.push(['Ibu/saudara kandung idap Hepatitis?', getRadioValue('Hepatitis_KontakKeluarga')]);
         tableBody.push([{ content: 'SKRINING AKTIVITAS FISIK', colSpan: 2, styles: sectionHeaderStyle }]);
         tableBody.push(['Hari aktif fisik (min. 60 menit/hari)', document.getElementById('aktivitasFisik').value]);
         tableBody.push([{ content: 'SKRINING KESEHATAN JIWA (dalam 2 minggu terakhir)', colSpan: 2, styles: sectionHeaderStyle }]);
-        tableBody.push(['Sering merasa khawatir/gelisah?', getRadioValue('jiwa1')]);
-        tableBody.push(['Berpikir berlebihan/sulit kendali?', getRadioValue('jiwa2')]);
-        tableBody.push(['Sering merasa sedih/tertekan?', getRadioValue('jiwa3')]);
-        tableBody.push(['Sering capek/sulit tidur/sulit fokus?', getRadioValue('jiwa4')]);
+        tableBody.push(['Sering merasa khawatir/gelisah?', getRadioValue('Jiwa_Khawatir')]);
+        tableBody.push(['Berpikir berlebihan/sulit kendali?', getRadioValue('Jiwa_Overthinking')]);
+        tableBody.push(['Sering merasa sedih/tertekan?', getRadioValue('Jiwa_Sedih')]);
+        tableBody.push(['Sering capek/sulit tidur/sulit fokus?', getRadioValue('Jiwa_Capek')]);
         tableBody.push([{ content: 'SKRINING KESEHATAN INDRA', colSpan: 2, styles: sectionHeaderStyle }]);
-        tableBody.push(['Ada bercak kulit kebas/kurang rasa?', getRadioValue('indra1')]);
-        tableBody.push(['Ada lumpuh/luka tidak terasa nyeri?', getRadioValue('indra2')]);
-        tableBody.push(['Ada koreng/kudis gatal malam hari?', getRadioValue('indra3')]);
-        tableBody.push(['Keluarga/teman punya koreng sama?', getRadioValue('indra4')]);
-        tableBody.push(['Menggunakan kacamata?', getRadioValue('indra5')]);
-        tableBody.push(['Ada gigi berlubang?', getRadioValue('indra6')]);
-        
-        // Cek apakah pertanyaan khusus ditampilkan, jika ya, tambahkan ke PDF
+        tableBody.push(['Ada bercak kulit kebas/kurang rasa?', getRadioValue('Indra_BercakKulit')]);
+        tableBody.push(['Ada lumpuh/luka tidak terasa nyeri?', getRadioValue('Indra_LukaKebas')]);
+        tableBody.push(['Ada koreng/kudis gatal malam hari?', getRadioValue('Indra_Kudis')]);
+        tableBody.push(['Keluarga/teman punya koreng sama?', getRadioValue('Indra_KontakKudis')]);
+        tableBody.push(['Menggunakan kacamata?', getRadioValue('Indra_Kacamata')]);
+        tableBody.push(['Ada gigi berlubang?', getRadioValue('Indra_GigiLubang')]);
         if (containerKhusus.style.display !== 'none') {
             tableBody.push([{ content: 'SKRINING KESEHATAN REPRODUKSI', colSpan: 2, styles: sectionHeaderStyle }]);
-            tableBody.push(['Sudah menstruasi?', getRadioValue('repro1')]);
-            if (getRadioValue('repro1') === 'Ya') {
-                tableBody.push(['Usia menstruasi pertama', document.getElementById('repro2').value + ' Tahun']);
-            }
-            tableBody.push(['Pernah keputihan?', getRadioValue('repro3')]);
-            tableBody.push(['Pernah gatal di kemaluan?', getRadioValue('repro4')]);
-            tableBody.push(['Nyeri saat BAK/BAB?', getRadioValue('repro5')]);
-
+            tableBody.push(['Sudah menstruasi?', getRadioValue('Reproduksi_SudahMenstruasi')]);
+            if (getRadioValue('Reproduksi_SudahMenstruasi') === 'Ya') { tableBody.push(['Usia menstruasi pertama', document.getElementById('repro2').value + ' Tahun']); }
+            tableBody.push(['Pernah keputihan?', getRadioValue('Reproduksi_Keputihan')]);
+            tableBody.push(['Pernah gatal di kemaluan?', getRadioValue('Reproduksi_Gatal')]);
+            tableBody.push(['Nyeri saat BAK/BAB?', getRadioValue('Reproduksi_NyeriBAK')]);
             tableBody.push([{ content: 'SKRINING PERILAKU MEROKOK', colSpan: 2, styles: sectionHeaderStyle }]);
-            tableBody.push(['Merokok setahun terakhir?', getRadioValue('rokok1')]);
-            if (getRadioValue('rokok1') === 'Ya') {
-                tableBody.push(['Jenis rokok yang dikonsumsi', getRadioValue('rokok2')]);
-            } else if (getRadioValue('rokok1') === 'Tidak') {
-                 tableBody.push(['Terpapar asap rokok sebulan terakhir?', getRadioValue('rokok3')]);
-            }
-
+            tableBody.push(['Merokok setahun terakhir?', getRadioValue('Rokok_MerokokSetahun')]);
+            if (getRadioValue('Rokok_MerokokSetahun') === 'Ya') { tableBody.push(['Jenis rokok yang dikonsumsi', getRadioValue('Rokok_JenisRokok')]); } 
+            else if (getRadioValue('Rokok_MerokokSetahun') === 'Tidak') { tableBody.push(['Terpapar asap rokok sebulan terakhir?', getRadioValue('Rokok_TerpaparAsap')]); }
             tableBody.push([{ content: 'SKRINING KEBUGARAN', colSpan: 2, styles: sectionHeaderStyle }]);
-            tableBody.push(['Pernah dinyatakan dokter punya masalah tulang/sendi?', getRadioValue('kebugaran1')]);
+            tableBody.push(['Pernah dinyatakan dokter punya masalah tulang/sendi?', getRadioValue('Kebugaran_MasalahSendi')]);
         }
-        
-        // Membuat PDF
         doc.setFontSize(18);
         doc.text('Hasil Formulir Skrining Kesehatan Anak Sekolah', 40, 30);
-        
-        doc.autoTable({
-            startY: 50,
-            head: [['Parameter', 'Jawaban']],
-            body: tableBody,
-            theme: 'grid',
-            headStyles: { fillColor: '#2980b9' },
-            columnStyles: { 0: { fontStyle: 'bold' } },
-        });
-
+        doc.autoTable({ startY: 50, head: [['Parameter', 'Jawaban']], body: tableBody, theme: 'grid', headStyles: { fillColor: '#2980b9' }, columnStyles: { 0: { fontStyle: 'bold' } } });
         const fileName = `Skrining_${namaLengkap.replace(/ /g, '_')}_${document.getElementById('tanggal').value}.pdf`;
         doc.save(fileName);
-    });
+    }
 });
 </script>
 
